@@ -1,8 +1,9 @@
 
 /*center pls*/
 #logo{
-    left: 50%;
-    top: 50%;
+    position: relative;
+    left: 40%;
+    top: 10%;
 }
 
 /* Log-In button - the button itself. */
