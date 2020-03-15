@@ -6,6 +6,7 @@
     top: 10%;
 }
 
+
 /* Log-In button - the button itself. */
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
 .button {
@@ -27,11 +28,13 @@
     top: 50%;
 }
   
+
 a {
     color: #274C77;
     text-decoration: none;
     letter-spacing: 1px;
 }
+
 
 #button-3 {
     position: relative;
@@ -39,11 +42,13 @@ a {
     cursor: pointer;
 }
   
+
 #button-3 a {
     position: relative;
     transition: all .45s ease-Out;
 }
   
+
 #circle {
     width: 0%;
     height: 0%;
@@ -57,6 +62,7 @@ a {
     left: 70px;
 }
   
+
 #button-3:hover #circle {
     width: 200%;
     height: 500%;
@@ -65,6 +71,7 @@ a {
     left: -70px;
 }
   
+
 #button-3:hover a {
     color:#FFFFFF;
 }

@@ -1,0 +1,61 @@
+
+/* The searchbar at the top */
+#keywordSearchBar {
+position: absolute;
+width: 297px;
+height: 50px;
+left: 59px;
+top: 139px;
+
+background: #C4C4C4;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Keyword Search Bar */
+#keywordSearchBarText {
+position: absolute;
+width: 262px;
+height: 41px;
+left: 93px;
+top: 148px;
+
+font-family: Rubik;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+
+color: #000000;
+}
+
+
+/* Text indicating sorting options */
+#SortingText {
+position: absolute;
+width: 157px;
+height: 15px;
+left: 62px;
+top: 331px;
+
+font-family: Rubik;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+
+color: #000000;
+
+mix-blend-mode: normal;
+}
+
+/* Search button */
+#searchButton {
+position: absolute;
+width: 297px;
+height: 50px;
+left: 58px;
+top: 740px;
+
+background: #274C77;
+}
