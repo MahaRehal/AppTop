@@ -1,6 +1,16 @@
-.col-md-1-1{
-    width: 12.5%;
-    border: solid;
-    border: black;
-    border: 2px;
+body{
+    background-color: rgb(48, 48, 48);
+    color: white;
 }
+.col, .col-md-2{
+    width: 12.5%;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    background-color: rgb(48, 48, 48);
+    text-align: center;
+    color: white;
+}
+
+
+
