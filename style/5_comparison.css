@@ -1,16 +1,49 @@
-body{
-    background-color: rgb(48, 48, 48);
-    color: white;
-}
-.col, .col-md-2{
-    width: 12.5%;
-    border-style: solid;
-    border-color: black;
-    padding: 5px;
-    background-color: rgb(48, 48, 48);
-    text-align: center;
+#titleNav {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-size: x-large;
     color: white;
 }
 
+#mainCard {
+    margin-top: 10px;
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#cardTitle {
+    text-align: center;
+}
+
+#searchButtonMain {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.laptop2 {
+    float: right;
+}
+
+.laptop1 {
+    float: left;
+}
+
+#dropdownMenu1 {
+    color: rgb(0, 123, 255);
+    background-color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: large;
+}
 
 
