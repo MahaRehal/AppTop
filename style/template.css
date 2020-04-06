@@ -178,7 +178,7 @@
     max-width: 100%;
 }
 
-#modalInput {
+#modalInputOcc, #modalInputPref, #modalInputBudg, #modalInputQuote {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -195,7 +195,7 @@
     margin-bottom: 5px;
 }
 
-#modalInput:hover {
+#modalInputOcc:hover, #modalInputPref:hover, #modalInputBudg:hover, #modalInputQuote:hover {
     color: black;
     background-color: white;
     border-color: rgb(0, 123, 255);

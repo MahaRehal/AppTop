@@ -6,11 +6,16 @@ let laptop2 = "laptop2";
 //comparisons with numerical values
 function getBattery(one, two){
     //getting battery values
-    db.collection("Laptops").doc(one).onSnapshot(
-        function(snap) {
-            document.getElementById(two).innerHTML = snap.data().Battery;
-        }
-    );
+    firebase.auth().onAuthStateChanged(function (user)){
+        db.collection("Laptops").doc(one)
+        .get()
+        .then(
+            function(snap) {
+                document.getElementById(two).innerHTML = snap.data().Battery;
+            }
+        );
+    }
+    
 }
 
 getBattery(laptop1Db, laptop1);
@@ -37,5 +42,4 @@ if (batteryOneValue > batteryTwoValue){
 
 //comparison with rankings from database
 // cpu, graphics, etc
-
 //initializing functions

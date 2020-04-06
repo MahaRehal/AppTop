@@ -34,7 +34,7 @@
         Settings
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <a class="dropdown-item" href="#!">Account</a>
+        <a class="dropdown-item" onclick="">Account</a>
         <a class="dropdown-item" href="#!">Privacy Policy</a>
       </div>
     </div>
@@ -46,17 +46,19 @@
       <div class="card">
         <img class="card-img-top" src="images/eldorado.jpg" alt="Laptop Pic Goes Here">
         <div class="card-body">
-          <h4 class="card-title">Dora Marquez</h4>
-          <p class="card-text">
+          <h4 class="card-title" id="main-card-name">Dora Marquez</h4>
+          <p class="card-text" id="occupation">
             Occupation: Explorer
           </p>
-          <p class="card-text">
+          <p class="card-text" id="preference">
             Preference: Video Editing
           </p>
-          <p class="card-text">
+          <p class="card-text" id="budget">
             Budget: 500$
           </p>
-          <p class="card-text">Quote: "Exploring doesn't pay well..."</p>
+          <p class="card-text" id="quote">
+            Quote: "Exploring doesn't pay well..."
+          </p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             id="searchButtonMain1">
             Edit
@@ -64,7 +66,7 @@
         </div>
       </div>
     </div>
-    <a href="#!" class="btn btn-primary" id="searchButtonMain2">Search for Laptops!</a>
+    <a href="search.html" class="btn btn-primary" id="searchButtonMain2">Search for Laptops!</a>
   </div>
 
   <!-- Modal -->
@@ -80,13 +82,13 @@
         </div>
         <div class="modal-body" id="infoBody">
           <label for="modalInput" id="modalLabel">Occupation</label>
-          <input type="text" class="form-control" id="modalInput" placeholder="Ex: archaeologist...">
+          <input type="text" class="form-control" id="modalInputOcc" placeholder="Ex: archaeologist...">
           <label for="modalInput" id="modalLabel">Preference</label>
-          <input type="text" class="form-control" id="modalInput" placeholder="Ex: rendering...">
+          <input type="text" class="form-control" id="modalInputPref" placeholder="Ex: rendering...">
           <label for="modalInput" id="modalLabel">Budget</label>
-          <input type="text" class="form-control" id="modalInput" placeholder="Ex: 600$...">
+          <input type="text" class="form-control" id="modalInputBudg" placeholder="Ex: 600$...">
           <label for="modalInput" id="modalLabel">Quote</label>
-          <input type="text" class="form-control" id="modalInput" placeholder="Ex: give me money...">
+          <input type="text" class="form-control" id="modalInputQuote" placeholder="Ex: give me money...">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeButton">Close</button>
@@ -113,7 +115,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <script src="scripts/firebase_api_carly.js"> </script>
 
   <!--------------------------------------------------------------------->
   <!-- JS files: Your own JavaScript functions included here    -->

@@ -10,7 +10,7 @@
 <body>
 
     <nav class="navbar sticky-top navbar-dark bg-primary">
-        <a class="navbar-brand" href="#!" id="titleNav">Apptop</a>
+        <a class="navbar-brand" href="main." id="titleNav">Apptop</a>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" type="button" id="dropdownMenu1"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,8 +27,8 @@
         <div class="container-fluid">
             <div class="form-group text-center">
                 <div class="container mt-5">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Lower Bound">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Upper Bound">
+                    <input type="text" class="form-control" id="searchInputMin" placeholder="Lower Bound">
+                    <input type="text" class="form-control" id="searchInputMax" placeholder="Upper Bound">
                 </div>
                 <button class="mt-5" type="button" onclick="startSearch()" id="searchButton"><span>Search
                     </span></button>
@@ -40,7 +40,7 @@
         <div class="card-body">
             <h4 class="card-title" id="cardTitle">Your Search Results</h4>
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" id="laptopCards">
 
                     <!-- Tiles will go here -->
 

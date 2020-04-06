@@ -1,5 +1,7 @@
 let db;
 
+//Check for login
+
 function initDB(){
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -19,12 +21,17 @@ initDB();
 
 function updateProfileCard(){
     updateName();
+    updateProfile();
 }
 
 function updateName(){
     firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById("main-card-name").innerHTML = user.displayName;
-      });
+    });
+}
+
+function updateProfile(){
+    
 }
 
 //function updateUser() {
@@ -46,8 +53,40 @@ function logID(){
 }
 logID();
 
+function saveChanges(){
+    var authRef = firebase.auth();
+    authRef.onAuthStateChanged(function(user) {
+        if (user) {
+            console.log('Display name onAuthStateChanged : '+user.displayName);
+            updatePreferences();
+        } else {
+            console.log('not login');
+        }
+    });
+}
 
+function updatePreferences(){
+    let updateOccupation = document.getElementById("modalInputOcc").value;
+    let updatePreference = document.getElementById("modalInputPref").value;
+    let updateBudget = document.getElementById("modalInputBudg").value;
+    let updateQuote = document.getElementById("modalInputQuote").value;
 
+    var userNow = firebase.auth().currentUser;
+        userNow.updateProfile({
+            occupation: updateOccupation,
+            preference: updatePreference,
+            budget: updateBudget,
+            quote: updateQuote
+        }).then(function() {
+            document.getElementById("occupation").innerHTML = "Occupation: " + userNow.occupation;
+            document.getElementById("preference").innerHTML = "Preference: " + userNow.preference;
+            document.getElementById("budget").innerHTML = "Budget: " + userNow.budget;
+            document.getElementById('quote').innerHTML = "Quote + \"" + userNow.quote + "\""
+        }, function(error) {
+            
+        });
+
+}
 
 function hideProfile() {
 
