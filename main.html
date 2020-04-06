@@ -54,13 +54,45 @@
             Preference: Video Editing
           </p>
           <p class="card-text">
-            Range: $0 - $1000
+            Budget: 500$
           </p>
           <p class="card-text">Quote: "Exploring doesn't pay well..."</p>
-          <a href="#!" class="btn btn-primary" id="searchButtonMain">View Tracked Laptops!</a>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            id="searchButtonMain1">
+            Edit
+          </button>
         </div>
       </div>
-      <a href="#!" class="btn btn-primary" id="searchButtonMain">Search for Laptops!</a>
+    </div>
+    <a href="#!" class="btn btn-primary" id="searchButtonMain2">Search for Laptops!</a>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="infoBody">
+          <label for="modalInput" id="modalLabel">Occupation</label>
+          <input type="text" class="form-control" id="modalInput" placeholder="Ex: archaeologist...">
+          <label for="modalInput" id="modalLabel">Preference</label>
+          <input type="text" class="form-control" id="modalInput" placeholder="Ex: rendering...">
+          <label for="modalInput" id="modalLabel">Budget</label>
+          <input type="text" class="form-control" id="modalInput" placeholder="Ex: 600$...">
+          <label for="modalInput" id="modalLabel">Quote</label>
+          <input type="text" class="form-control" id="modalInput" placeholder="Ex: give me money...">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeButton">Close</button>
+          <button type="button" class="btn btn-primary" onclick="saveChanges()" id="saveButton">Save changes</button>
+        </div>
+      </div>
     </div>
   </div>
 

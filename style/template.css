@@ -27,10 +27,20 @@
     text-align: center;
 }
 
-#searchButtonMain {
+#searchButtonMain1 {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    width: 6vw;
+}
+
+#searchButtonMain2 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: fit-content;
+    margin-bottom: 10px;
+    margin-top: -10px;
 }
 
 #someShit {
@@ -48,7 +58,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: large;
-    transition: all 0.3s;
+    transition: all 0.2s;
+    border-radius: 12px;
 }
 
 #dropdownMenu1:hover {
@@ -69,12 +80,12 @@
     position: absolute;
     opacity: 0;
     top: 0;
-    right: -600px;
+    right: 100px;
     transition: 0.5s;
 }
 
 #dropdownMenu1:hover span {
-    padding-right: 70px;
+    padding-right: 60px;
 }
 
 #dropdownMenu1:hover span:after {
@@ -91,15 +102,21 @@
     background-color: transparent;
     padding: 11px 23px;
     text-decoration: none;
-    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
     border: 2px solid grey;
     max-width: 25%;
     border-radius: 12px;
-    margin-bottom: 40px;
 }
 
 #searchInput:first-child {
     margin-top: 25%;
+    margin-bottom: 40px;
+}
+
+#searchInput:nth-child(2) {
+    margin-bottom: 5px;
 }
 
 #searchInput:hover {
@@ -159,4 +176,56 @@
     margin-right: auto;
     display: block;
     max-width: 100%;
+}
+
+#modalInput {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    color: black;
+    background-color: transparent;
+    padding: 11px 23px;
+    text-decoration: none;
+    margin-right: auto;
+    display: grid;
+    border: 2px solid grey;
+    max-width: 50%;
+    border-radius: 12px;
+    margin-bottom: 5px;
+}
+
+#modalInput:hover {
+    color: black;
+    background-color: white;
+    border-color: rgb(0, 123, 255);
+    border-width: 3px;
+}
+
+#modalLabel {
+    margin-left: 3px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 400;
+}
+
+#closeButton {
+    left: 20px;
+    position: absolute;
+    transition: all 0.5s;
+}
+
+#closeButton:hover {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+}
+
+#saveButton {
+    transition: all 0.5s;
+}
+
+#saveButton:hover {
+    color: black;
+    background-color: white;
+    border: 2px solid rgb(0, 123, 255);
 }
