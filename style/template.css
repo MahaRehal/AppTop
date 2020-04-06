@@ -48,7 +48,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: large;
-    transition: all 0.3s;
+    transition: all 0.2s;
+    border-radius: 12px;
 }
 
 #dropdownMenu1:hover {
@@ -69,12 +70,12 @@
     position: absolute;
     opacity: 0;
     top: 0;
-    right: -600px;
+    right: 100px;
     transition: 0.5s;
 }
 
 #dropdownMenu1:hover span {
-    padding-right: 70px;
+    padding-right: 60px;
 }
 
 #dropdownMenu1:hover span:after {
@@ -91,15 +92,21 @@
     background-color: transparent;
     padding: 11px 23px;
     text-decoration: none;
-    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
     border: 2px solid grey;
     max-width: 25%;
     border-radius: 12px;
-    margin-bottom: 40px;
 }
 
 #searchInput:first-child {
     margin-top: 25%;
+    margin-bottom: 40px;
+}
+
+#searchInput:nth-child(2) {
+    margin-bottom: 5px;
 }
 
 #searchInput:hover {

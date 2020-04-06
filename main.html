@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Apptop</title>
-  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="comp1800 project" content="my bcit project">
   <meta name="author" content="BCIT">
 
   <!----------------------------------------------->
@@ -40,27 +40,27 @@
     </div>
   </nav>
 
-  <div class="card" id="mainCard">
+  <div class="d-fluid" id="mainCard">
     <div class="card-body">
       <h4 class="card-title" id="cardTitle">Your Account!</h4>
       <div class="card">
         <img class="card-img-top" src="images/eldorado.jpg" alt="Laptop Pic Goes Here">
         <div class="card-body">
-          <h4 class="card-title">Dora Marquez</h4>
-          <p class="card-text">
-            Occupation: Explorer
+          <h4 class="card-title" id="main-card-name">Name Doe</h4>
+          <p class="card-text" id="occupation">
+            Occupation: 
           </p>
-          <p class="card-text">
-            Preference: Video Editing
+          <p class="card-text" id="preference">
+            Preference: 
           </p>
-          <p class="card-text">
-            Range: $0 - $1000
+          <p class="card-text" id="range">
+            Range: 
           </p>
-          <p class="card-text">Quote: "Exploring doesn't pay well..."</p>
+          <p class="card-text" id="quote">Quote: ""</p>
           <a href="#!" class="btn btn-primary" id="searchButtonMain">View Tracked Laptops!</a>
         </div>
       </div>
-      <a href="#!" class="btn btn-primary" id="searchButtonMain">Search for Laptops!</a>
+      <a href="search.html" class="btn btn-primary" id="searchButtonMain">Search for Laptops!</a>
     </div>
   </div>
 
@@ -81,7 +81,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <script src="scripts/firebase_api_carly.js"> </script>
 
   <!--------------------------------------------------------------------->
   <!-- JS files: Your own JavaScript functions included here    -->
