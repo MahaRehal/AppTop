@@ -38,7 +38,8 @@ function getBounds(){
 function getResults(min, max){
     //laptop div
     let laptopCards = document.getElementById("laptopCards");
-    let i = 1;
+    let i = 0;
+    let j = 0;
 
     db.collection("Laptops").orderBy('Price').get()
     .then(function(querySnapshot){ 
@@ -47,7 +48,6 @@ function getResults(min, max){
                 console.log("Document data:", doc.data());
                 
                 if(doc.data().Price <= max && doc.data().Price >= min){
-
                     let modalId = "modal" + i;
 
                     //laptop card
@@ -205,8 +205,22 @@ function getResults(min, max){
                     modaldialog.append(modalContent);
                     modal.append(modaldialog);
 
-                    let body = document.getElementById("body");
-                    body.append(modal);
+
+                    let row1 = document.createElement("div");
+                    row1.setAttribute("id", "row" + j);
+                    if (i % 3 == 0){
+                        j++;
+                        let newRow = document.createElement("div");
+                        newRow.setAttribute("id", "row" + (j));
+                        newRow.setAttribute("class", "card-deck");
+                        newRow.append(newLaptopCard);
+                        let body = document.getElementById("laptopCards");
+                        body.append(newRow);
+                    } else {
+                        let row = document.getElementById("row" + j);
+                        row.append(newLaptopCard);
+                    }
+                    
                     i++;
 
                 } else {
