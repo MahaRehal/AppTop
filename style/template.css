@@ -308,7 +308,7 @@
     transform: scale(1.1)translate(-20px, 2px);
 }
 
-#usernameInput,
+#emailInput,
 #passwordInput {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: normal;
@@ -327,7 +327,7 @@
     transition: all 0.2s;
 }
 
-#usernameInput:hover,
+#emailInput:hover,
 #passwordInput:hover {
     color: black;
     background-color: white;
@@ -337,4 +337,10 @@
 
 #passwordInput {
     margin-top: 15px;
+}
+
+/* mobile friendly pls :D */
+#laptopImage{
+    height: 200px;
+    width: 200px;
 }

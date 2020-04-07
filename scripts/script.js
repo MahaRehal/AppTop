@@ -1,7 +1,5 @@
 let db;
 
-//Check for login
-
 function initDB(){
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -19,83 +17,58 @@ function initDB(){
 }
 initDB();
 
-function updateProfileCard(){
-    updateName();
-    updateProfile();
-}
+function login(){
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    var uiConfig = {
+        callbacks: {
+            signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                // User successfully signed in.
+                // Return type determines whether we continue the redirect automatically
+                // or whether we leave that to developer to handle.
+                var user = authResult.user;
+                if (authResult.additionalUserInfo.isNewUser) {
+                    db.collection("users").doc(user.uid).set({
+                            name: user.displayName,
+                            email: user.email
+                        }).then(function () {
+                            console.log("New user added to firestore");
+                            window.location.assign("main.html");
+                        })
+                        .catch(function (error) {
+                            console.log("Error adding new user: " + error);
+                        });
+                } else {
+                    return true;
+                }
+                return false;
+            },
 
-function updateName(){
-    firebase.auth().onAuthStateChanged(function(user) {
-        document.getElementById("main-card-name").innerHTML = user.displayName;
-    });
-}
-
-function updateProfile(){
-    
-}
-
-//function updateUser() {
-//    firebase.auth().onAuthStateChanged(function (user) {
-//        db.collection("users").doc(user.uid).update({
-//            "haircolor": "blonde"
-//        });
-//    });
-//}
-//updateUser();
-
-updateProfileCard();
-
-function logID(){
-    firebase.auth().onAuthStateChanged(function (user){
-        console.log(user.uid);   //print the ugly id
-        console.log(user.displayName); //print elmo
-    });
-}
-logID();
-
-function saveChanges(){
-    var authRef = firebase.auth();
-    authRef.onAuthStateChanged(function(user) {
-        if (user) {
-            console.log('Display name onAuthStateChanged : '+user.displayName);
-            updatePreferences();
-        } else {
-            console.log('not login');
-        }
-    });
-}
-
-function updatePreferences(){
-    let updateOccupation = document.getElementById("modalInputOcc").value;
-    let updatePreference = document.getElementById("modalInputPref").value;
-    let updateBudget = document.getElementById("modalInputBudg").value;
-    let updateQuote = document.getElementById("modalInputQuote").value;
-
-    var userNow = firebase.auth().currentUser;
-        userNow.updateProfile({
-            occupation: updateOccupation,
-            preference: updatePreference,
-            budget: updateBudget,
-            quote: updateQuote
-        }).then(function() {
-            document.getElementById("occupation").innerHTML = "Occupation: " + userNow.occupation;
-            document.getElementById("preference").innerHTML = "Preference: " + userNow.preference;
-            document.getElementById("budget").innerHTML = "Budget: " + userNow.budget;
-            document.getElementById('quote').innerHTML = "Quote + \"" + userNow.quote + "\""
-        }, function(error) {
-            
-        });
-
-}
-
-function hideProfile() {
-
-    document.getElementById("maincard").classList.replace("d-fluid", "d-none");
-
-}
-
-function showProfile() {
-
-    document.getElementById("maincard").classList.replace("d-none", "d-fluid");
-
+            uiShown: function () {
+                // The widget is rendered.
+                // Hide the loader.
+                document.getElementById('loader').style.display = 'none';
+            }
+        },
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: 'main.html',
+        signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+            //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: 'main.html',
+        // Privacy policy url.
+        privacyPolicyUrl: 'main.html',
+        accountChooserEnabled: false
+    };
+    // The start method will wait until the DOM is loaded.
+    // Inject the login interface into the HTML
+    ui.start('#firebaseui-auth-container', uiConfig);
 }

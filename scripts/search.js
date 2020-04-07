@@ -38,6 +38,7 @@ function getBounds(){
 function getResults(min, max){
     //laptop div
     let laptopCards = document.getElementById("laptopCards");
+    let i = 1;
 
     db.collection("Laptops").orderBy('Price').get()
     .then(function(querySnapshot){ 
@@ -47,7 +48,7 @@ function getResults(min, max){
                 
                 if(doc.data().Price <= max && doc.data().Price >= min){
 
-                    let modalId = "modal" + doc.data().Name;
+                    let modalId = "modal" + i;
 
                     //laptop card
                     let newLaptopCard = document.createElement("div");
@@ -58,6 +59,7 @@ function getResults(min, max){
                     laptopImage.setAttribute("class", "card-img-top");
                     laptopImage.setAttribute("src", doc.data().Image);
                     laptopImage.setAttribute("alt", "Laptop Image");
+                    laptopImage.setAttribute("id", "laptopImage");
                     //append laptop image
                     newLaptopCard.append(laptopImage);
 
@@ -77,19 +79,19 @@ function getResults(min, max){
                     let buttonDiv = document.createElement("div");
                     buttonDiv.setAttribute("class", "btn-group");
 
-                    let wishlistButton = document.createElement("button");
-                    wishlistButton.setAttribute("class", "btn btn-primary");
-                    wishlistButton.innerHTML = "Add to Wishlist";
+                    //let wishlistButton = document.createElement("button");
+                    //wishlistButton.setAttribute("class", "btn btn-primary");
+                    //wishlistButton.innerHTML = "Add to Wishlist";
                     //wishlistButton.setAttribute("onclick", addToWishList());
 
                     let infoButton = document.createElement("button");
                     infoButton.setAttribute("type", "button");
                     infoButton.setAttribute("class", "btn btn-primary");
                     infoButton.setAttribute("data-toggle","modal");
-                    infoButton.setAttribute("data-target", modalId);
+                    infoButton.setAttribute("data-target", "#"+modalId);
                     infoButton.innerHTML = "Show Info";
 
-                    buttonDiv.append(wishlistButton);
+                    //buttonDiv.append(wishlistButton);
                     buttonDiv.append(infoButton);
 
                     laptopInfo.append(laptopName);
@@ -124,7 +126,7 @@ function getResults(min, max){
 
                     //done
                     let laptopHeader = document.createElement("h5");
-                    laptopHeader.setAttribute("id", "modalTitle");
+                    laptopHeader.setAttribute("class", "modal-title");
                     laptopHeader.innerHTML = doc.data().Name;
 
                     //done
@@ -132,12 +134,12 @@ function getResults(min, max){
                     closeButton.setAttribute("type", "button");
                     closeButton.setAttribute("class", "close");
                     closeButton.setAttribute("data-dismiss", "modal");
-                    closeButton.setAttribute("label", "close");
+                    closeButton.setAttribute("aria-label", "close");
 
                     //done
                     let span = document.createElement("span");
                     span.setAttribute("aria-hidden", "true");
-                    span.innerHTML = "&times;";
+                    //span.textContent = "&times;";
                     closeButton.append(span);
 
                     modalHeader.append(laptopHeader);
@@ -148,44 +150,44 @@ function getResults(min, max){
                     specsDiv.setAttribute("class", "modal-body");
 
                     let brand = document.createElement("p");
-                    brand.innerHTML = doc.data().Brand;
+                    brand.innerHTML = "Brand: " + doc.data().Brand;
                     specsDiv.append(brand);
 
                     let CPU = document.createElement("p");
-                    CPU.innerHTML = doc.data().CPU;
+                    CPU.innerHTML = "CPU: " + doc.data().CPU;
                     specsDiv.append(CPU);
 
                     let GPU = document.createElement("p");
-                    GPU.innerHTML = doc.data().GPU;
+                    GPU.innerHTML = "GPU: " + doc.data().GPU;
                     specsDiv.append(GPU);
 
                     let memory = document.createElement("p");
-                    memory.innerHTML = doc.data().Memory;
+                    memory.innerHTML = "RAM: " + doc.data().Memory + "GB";
                     specsDiv.append(memory);
 
                     let OS = document.createElement("p");
-                    OS.innerHTML = doc.data().OS;
+                    OS.innerHTML = "OS: " + doc.data().OS;
                     specsDiv.append(OS);
 
                     let screenRes = document.createElement("p");
-                    screenRes.innerHTML = doc.data().ScreenResolution;
+                    screenRes.innerHTML = "Screen Resolution: " + doc.data().ScreenResolution + "p";
                     specsDiv.append(screenRes);
 
                     let screenSize = document.createElement("p");
-                    screenSize.innerHTML = doc.data().ScreenSize;
+                    screenSize.innerHTML = "Screen Size: " + doc.data().ScreenSize+ "\"";
                     specsDiv.append(screenSize);
 
                     let storage = document.createElement("p");
-                    storage.innerHTML = doc.data().Storage;
+                    storage.innerHTML = "Storage Size: " + doc.data().Storage;
                     specsDiv.append(storage);
 
                     let storageType = document.createElement("p");
-                    storageType.innerHTML = doc.data().StorageType;
+                    storageType.innerHTML = "Storage Type: " + doc.data().StorageType;
                     specsDiv.append(storageType);
                     
                     //content
-                    let exitDiv = document.createElement("div");
-                    exitDiv.setAttribute("class", "modal-footer");
+                    let modalFooter = document.createElement("div");
+                    modalFooter.setAttribute("class", "modal-footer");
 
                     //exitdiv
                     let exitModal = document.createElement("button");
@@ -194,17 +196,18 @@ function getResults(min, max){
                     exitModal.setAttribute("data-dismiss", "modal");
                     exitModal.innerHTML = "Close";
 
-                    exitDiv.append(exitModal);
+                    modalFooter.append(exitModal);
 
                     modalContent.append(modalHeader);
                     modalContent.append(specsDiv);
-                    modalContent.append(exitDiv);
+                    modalContent.append(modalFooter);
 
                     modaldialog.append(modalContent);
                     modal.append(modaldialog);
 
                     let body = document.getElementById("body");
                     body.append(modal);
+                    i++;
 
                 } else {
                     console.log("not in range")
