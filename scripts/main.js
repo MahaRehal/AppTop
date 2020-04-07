@@ -19,12 +19,14 @@ initDB();
 updateName();
 updateProfileCard();
 
+//update name on profile card with logged in user's name from database
 function updateName(){
     firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById("main-card-name").innerHTML = user.displayName;
    });
 }
 
+//updating database with input from textboxes
 function updateUserDB() {
     let updateOccupation = document.getElementById("modalInputOcc").value;
     let updatePreference = document.getElementById("modalInputPref").value;
@@ -71,13 +73,14 @@ function updateUserDB() {
     });
 }
 
+//save changes
 function saveChanges(){
     updateUserDB();
     updateProfileCard();
 }
 
+//updating profile card with unput values
 function updateProfileCard(){
-
     firebase.auth().onAuthStateChanged(function(user) {
         db.collection("users").doc(user.uid).get()
         .then(function(doc){
@@ -91,10 +94,12 @@ function updateProfileCard(){
 
 }
 
+//hide profile card
 function hideProfile() {
     document.getElementById("maincard").classList.replace("d-fluid", "d-none");
 }
 
+//show profile card
 function showProfile() {
     document.getElementById("maincard").classList.replace("d-none", "d-fluid");
 }

@@ -19,6 +19,7 @@ function initializeFirebase(){
 
 initializeFirebase();
 
+//initialize seach function
 function startSearch(){
     hideSearch();
     showSearchResults();
@@ -82,9 +83,11 @@ function getResults(min, max){
                     laptopPrice.innerHTML = "Price: " + doc.data().Price;
                     laptopPrice.setAttribute("id", "laptopPrice");
 
+                    //footer div for show info button
                     let buttonDiv = document.createElement("div");
                     buttonDiv.setAttribute("class", "btn-group");
 
+                    //info button
                     let infoButton = document.createElement("button");
                     infoButton.setAttribute("type", "button");
                     infoButton.setAttribute("class", "btn btn-primary");
@@ -117,39 +120,38 @@ function getResults(min, max){
                     modaldialog.setAttribute("class", "modal-dialog modal-dialog-centered");
                     modaldialog.setAttribute("role", "document");
                     
-                    //dialog
+                    //modal dialog
                     let modalContent = document.createElement("div");
                     modalContent.setAttribute("class", "modal-content");
 
-                    //content
+                    //modal content div
                     let modalHeader = document.createElement("div");
                     modalHeader.setAttribute("class", "modal-header");
 
-                    //done
+                    //header for modal
                     let laptopHeader = document.createElement("h5");
                     laptopHeader.setAttribute("class", "modal-title");
                     laptopHeader.innerHTML = doc.data().Name;
 
-                    //done
+                    //close button for modal
                     let closeButton = document.createElement("button");
                     closeButton.setAttribute("type", "button");
                     closeButton.setAttribute("class", "close");
                     closeButton.setAttribute("data-dismiss", "modal");
                     closeButton.setAttribute("aria-label", "close");
 
-                    //done
                     let span = document.createElement("span");
                     span.setAttribute("aria-hidden", "true");
-                    //span.textContent = "&times;";
                     closeButton.append(span);
 
                     modalHeader.append(laptopHeader);
                     modalHeader.append(closeButton);
 
-                    //laptop Specs content
+                    //laptop Specs modal content 
                     let specsDiv = document.createElement("div");
                     specsDiv.setAttribute("class", "modal-body");
 
+                    //get and append data from database
                     let brand = document.createElement("p");
                     brand.innerHTML = "Brand: " + doc.data().Brand;
                     specsDiv.append(brand);
@@ -209,7 +211,7 @@ function getResults(min, max){
                     let body = document.getElementById("body");
                     body.append(modal);
 
-
+                    //create div element for card decks every 3 cards
                     let row1 = document.createElement("div");
                     row1.setAttribute("id", "row" + j);
                     if (i % 3 == 0){
@@ -244,18 +246,23 @@ function addToWishList(laptopName){
         console.log(wishlistCounter);
     }); 
 }
+
+//hide the search div
 function hideSearch() {
     document.getElementById("searchInputDiv").classList.replace("d-fluid", "d-none");
 }
 
+//show the search div
 function showSearch() {
     document.getElementById("searchInputDiv").classList.replace("d-none", "d-fluid");
 }
 
+//hide search results
 function hideSearchResults() {
     document.getElementById("searchResultsDiv").classList.replace("d-fluid", "d-none");
 }
 
+//show search results
 function showSearchResults() {
     document.getElementById("searchResultsDiv").classList.replace("d-none", "d-fluid");
 }

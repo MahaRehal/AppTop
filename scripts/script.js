@@ -1,3 +1,5 @@
+let db;
+
 //initialize database
 function initDB(){
     // Your web app's Firebase configuration
@@ -66,7 +68,7 @@ function login(){
         tosUrl: 'main.html',
         // Privacy policy url.
         privacyPolicyUrl: 'main.html',
-        accountChooserEnabled: false
+        accountChooserEnabled: true
     };
     // The start method will wait until the DOM is loaded.
     // Inject the login interface into the HTML
