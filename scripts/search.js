@@ -36,33 +36,176 @@ function getBounds(){
 }
 
 function getResults(min, max){
+    //laptop div
     let laptopCards = document.getElementById("laptopCards");
-    let i = 1;
 
-    db.collection("Laptops").orderBy('Price', 'desc').get()
+    db.collection("Laptops").orderBy('Price').get()
     .then(function(querySnapshot){ 
         querySnapshot.forEach(function(doc){
             if(doc.exists){
                 console.log("Document data:", doc.data());
-                let row = document.createElement("tr");
-                let head = document.createElement("th");
-                head.scope = "row";
                 
                 if(doc.data().Price <= max && doc.data().Price >= min){
-                    let laptopName = document.createElement("td");
+
+                    let modalId = "modal" + doc.data().Name;
+
+                    //laptop card
+                    let newLaptopCard = document.createElement("div");
+                    newLaptopCard.setAttribute("class", "card");
+                    
+                    //laptop image
+                    let laptopImage = document.createElement("img");
+                    laptopImage.setAttribute("class", "card-img-top");
+                    laptopImage.setAttribute("src", doc.data().Image);
+                    laptopImage.setAttribute("alt", "Laptop Image");
+                    //append laptop image
+                    newLaptopCard.append(laptopImage);
+
+                    //laptop Info
+                    let laptopInfo = document.createElement("div");
+                    laptopInfo.setAttribute("class", "card-body");
+
+                    //laptop name
+                    let laptopName = document.createElement("h5");
+                    laptopName.setAttribute("class", "card-title")
                     laptopName.innerHTML = doc.data().Name;
 
-                    let laptopBrand = document.createElement("td");
-                    laptopBrand.innerHTML = doc.data().Brand;
+                    //price
+                    let laptopPrice = document.createElement("p");
+                    laptopPrice.innerHTML = "Price: " + doc.data().Price;
 
-                    let laptopPrice = document.createElement("td");
-                    laptopPrice.innerHTML = doc.data().Price;
+                    let buttonDiv = document.createElement("div");
+                    buttonDiv.setAttribute("class", "btn-group");
 
-                    laptopCards.append(row);
-                    laptopCards.append(head);
-                    laptopCards.append(laptopName);
-                    laptopCards.append(laptopBrand);
-                    laptopCards.append(laptopBrand);
+                    let wishlistButton = document.createElement("button");
+                    wishlistButton.setAttribute("class", "btn btn-primary");
+                    wishlistButton.innerHTML = "Add to Wishlist";
+                    //wishlistButton.setAttribute("onclick", addToWishList());
+
+                    let infoButton = document.createElement("button");
+                    infoButton.setAttribute("type", "button");
+                    infoButton.setAttribute("class", "btn btn-primary");
+                    infoButton.setAttribute("data-toggle","modal");
+                    infoButton.setAttribute("data-target", modalId);
+                    infoButton.innerHTML = "Show Info";
+
+                    buttonDiv.append(wishlistButton);
+                    buttonDiv.append(infoButton);
+
+                    laptopInfo.append(laptopName);
+                    laptopInfo.append(laptopPrice);
+                    laptopInfo.append(buttonDiv);
+
+                    newLaptopCard.append(laptopInfo);
+
+                    laptopCards.append(newLaptopCard);
+
+                    //MODAL add to seperate function
+                    let modal = document.createElement("div");
+                    modal.setAttribute("class", "modal fade");
+                    modal.setAttribute("id", modalId);
+                    modal.setAttribute("tabindex", "-1");
+                    modal.setAttribute("role", "dialog");
+                    modal.setAttribute("aria-labelledby", "exampleModalCenterTitle");
+                    modal.setAttribute("aria-hidden", "true");
+
+                    //modal
+                    let modaldialog = document.createElement("div");
+                    modaldialog.setAttribute("class", "modal-dialog modal-dialog-centered");
+                    modaldialog.setAttribute("role", "document");
+                    
+                    //dialog
+                    let modalContent = document.createElement("div");
+                    modalContent.setAttribute("class", "modal-content");
+
+                    //content
+                    let modalHeader = document.createElement("div");
+                    modalHeader.setAttribute("class", "modal-header");
+
+                    //done
+                    let laptopHeader = document.createElement("h5");
+                    laptopHeader.setAttribute("id", "modalTitle");
+                    laptopHeader.innerHTML = doc.data().Name;
+
+                    //done
+                    let closeButton = document.createElement("button");
+                    closeButton.setAttribute("type", "button");
+                    closeButton.setAttribute("class", "close");
+                    closeButton.setAttribute("data-dismiss", "modal");
+                    closeButton.setAttribute("label", "close");
+
+                    //done
+                    let span = document.createElement("span");
+                    span.setAttribute("aria-hidden", "true");
+                    span.innerHTML = "&times;";
+                    closeButton.append(span);
+
+                    modalHeader.append(laptopHeader);
+                    modalHeader.append(closeButton);
+
+                    //laptop Specs content
+                    let specsDiv = document.createElement("div");
+                    specsDiv.setAttribute("class", "modal-body");
+
+                    let brand = document.createElement("p");
+                    brand.innerHTML = doc.data().Brand;
+                    specsDiv.append(brand);
+
+                    let CPU = document.createElement("p");
+                    CPU.innerHTML = doc.data().CPU;
+                    specsDiv.append(CPU);
+
+                    let GPU = document.createElement("p");
+                    GPU.innerHTML = doc.data().GPU;
+                    specsDiv.append(GPU);
+
+                    let memory = document.createElement("p");
+                    memory.innerHTML = doc.data().Memory;
+                    specsDiv.append(memory);
+
+                    let OS = document.createElement("p");
+                    OS.innerHTML = doc.data().OS;
+                    specsDiv.append(OS);
+
+                    let screenRes = document.createElement("p");
+                    screenRes.innerHTML = doc.data().ScreenResolution;
+                    specsDiv.append(screenRes);
+
+                    let screenSize = document.createElement("p");
+                    screenSize.innerHTML = doc.data().ScreenSize;
+                    specsDiv.append(screenSize);
+
+                    let storage = document.createElement("p");
+                    storage.innerHTML = doc.data().Storage;
+                    specsDiv.append(storage);
+
+                    let storageType = document.createElement("p");
+                    storageType.innerHTML = doc.data().StorageType;
+                    specsDiv.append(storageType);
+                    
+                    //content
+                    let exitDiv = document.createElement("div");
+                    exitDiv.setAttribute("class", "modal-footer");
+
+                    //exitdiv
+                    let exitModal = document.createElement("button");
+                    exitModal.setAttribute("type", "button");
+                    exitModal.setAttribute("class", "btn btn-secondary")
+                    exitModal.setAttribute("data-dismiss", "modal");
+                    exitModal.innerHTML = "Close";
+
+                    exitDiv.append(exitModal);
+
+                    modalContent.append(modalHeader);
+                    modalContent.append(specsDiv);
+                    modalContent.append(exitDiv);
+
+                    modaldialog.append(modalContent);
+                    modal.append(modaldialog);
+
+                    let body = document.getElementById("body");
+                    body.append(modal);
+
                 } else {
                     console.log("not in range")
                 }
@@ -74,6 +217,9 @@ function getResults(min, max){
     )}
     )}
 
+function addToWishList(){
+
+}
 function hideSearch() {
     document.getElementById("searchInputDiv").classList.replace("d-fluid", "d-none");
 }

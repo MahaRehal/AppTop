@@ -93,7 +93,7 @@
     right: 0;
 }
 
-#searchInput {
+#searchInputMin, #searchInputMax {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -110,16 +110,16 @@
     border-radius: 12px;
 }
 
-#searchInput:first-child {
+#searchInputMin:first-child, #searchInputMax:first-child {
     margin-top: 25%;
     margin-bottom: 40px;
 }
 
-#searchInput:nth-child(2) {
+#searchInputMin:nth-child(2), #searchInputMax:nth-child(2) {
     margin-bottom: 5px;
 }
 
-#searchInput:hover {
+#searchInputMin:hover, #searchInputMax:hover {
     color: black;
     background-color: white;
     border-color: rgb(0, 123, 255);
