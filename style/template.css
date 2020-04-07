@@ -173,7 +173,8 @@
 #modalInputOcc,
 #modalInputPref,
 #modalInputBudg,
-#modalInputQuote {
+#modalInputQuote,
+#modalInputImg {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -193,7 +194,8 @@
 #modalInputOcc:hover,
 #modalInputPref:hover,
 #modalInputBudg:hover,
-#modalInputQuote:hover {
+#modalInputQuote:hover,
+#modalInputImg:hover {
     color: black;
     background-color: white;
     border-color: rgb(0, 123, 255);
@@ -411,4 +413,10 @@
     .mdl-textfield__input {
         width: 200px;
     }
+}
+
+#mainCardImg {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
 }

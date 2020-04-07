@@ -1,4 +1,5 @@
 let db;
+wishListCounter = 0;
 
 function initializeFirebase(){
      // Your web app's Firebase configuration
@@ -84,11 +85,6 @@ function getResults(min, max){
                     let buttonDiv = document.createElement("div");
                     buttonDiv.setAttribute("class", "btn-group");
 
-                    //let wishlistButton = document.createElement("button");
-                    //wishlistButton.setAttribute("class", "btn btn-primary");
-                    //wishlistButton.innerHTML = "Add to Wishlist";
-                    //wishlistButton.setAttribute("onclick", addToWishList());
-
                     let infoButton = document.createElement("button");
                     infoButton.setAttribute("type", "button");
                     infoButton.setAttribute("class", "btn btn-primary");
@@ -97,7 +93,6 @@ function getResults(min, max){
                     infoButton.innerHTML = "Show Info";
                     infoButton.setAttribute("id", "infoButton");
 
-                    //buttonDiv.append(wishlistButton);
                     buttonDiv.append(infoButton);
 
                     laptopInfo.append(laptopName);
@@ -232,19 +227,22 @@ function getResults(min, max){
                     
                     i++;
 
-                } else {
-                    console.log("not in range")
                 }
-            } else {
-                console.log("no such document");
             }
         }
 
     )}
     )}
 
-function addToWishList(){
-
+function addToWishList(laptopName){
+    let newLaptop = laptopName;    
+    firebase.auth().onAuthStateChanged(function (user){
+        db.collection("users").doc(user.uid).collection("wishlist").add({
+            "wishlist": [newLaptop]
+        }, {merge: true});
+        wishlistCounter++;
+        console.log(wishlistCounter);
+    }); 
 }
 function hideSearch() {
     document.getElementById("searchInputDiv").classList.replace("d-fluid", "d-none");

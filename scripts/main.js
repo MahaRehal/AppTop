@@ -16,11 +16,8 @@ function initDB(){
     db = firebase.firestore();
 }
 initDB();
-
-function updateProfileCard(){
-    updateName();
-    updateProfile();
-}
+updateName();
+updateProfileCard();
 
 function updateName(){
     firebase.auth().onAuthStateChanged(function(user) {
@@ -28,62 +25,77 @@ function updateName(){
    });
 }
 
-
-function updateUser() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).update({
-            "haircolor": "blonde"
-        });
-    });
-}
-updateUser();
-
-updateProfileCard();
-
-function saveChanges(){
-    var authRef = firebase.auth();
-    authRef.onAuthStateChanged(function(user) {
-        if (user) {
-            console.log('Display name onAuthStateChanged : '+user.displayName);
-            updatePreferences();
-        } else {
-            console.log('not login');
-        }
-    });
-}
-
-function updatePreferences(){
+function updateUserDB() {
     let updateOccupation = document.getElementById("modalInputOcc").value;
     let updatePreference = document.getElementById("modalInputPref").value;
     let updateBudget = document.getElementById("modalInputBudg").value;
     let updateQuote = document.getElementById("modalInputQuote").value;
+    let updateURL = document.getElementById("modalInputImg").value;
 
-    var userNow = firebase.auth().currentUser;
-        userNow.updateProfile({
-            occupation: updateOccupation,
-            preference: updatePreference,
-            budget: updateBudget,
-            quote: updateQuote
-        }).then(function() {
-            document.getElementById("occupation").innerHTML = "Occupation: " + userNow.occupation;
-            document.getElementById("preference").innerHTML = "Preference: " + userNow.preference;
-            document.getElementById("budget").innerHTML = "Budget: " + userNow.budget;
-            document.getElementById('quote').innerHTML = "Quote + \"" + userNow.quote + "\""
-        }, function(error) {
-            
-        });
+    firebase.auth().onAuthStateChanged(function (user) {
+        if(updateOccupation == null){
+            console.log(user.data().occupation);
+        } else {
+            db.collection("users").doc(user.uid).update({
+                "occupation": updateOccupation
+            });
+        }
+        if(updatePreference == null){
+            console.log(user.data().preference);
+        } else {
+            db.collection("users").doc(user.uid).update({
+                "preference": updatePreference
+            });
+        }
+        if(updateBudget == null){
+            console.log(user.data().budget);
+        } else {
+            db.collection("users").doc(user.uid).update({
+                "budget": updateBudget
+            });
+        }
+        if(updateQuote == null){
+            console.log(user.data().quote);
+        } else {
+            db.collection("users").doc(user.uid).update({
+                "quote": updateQuote
+            });
+        }
+        if(updateURL == null){
+            console.log(user.data().url);
+        } else {
+            db.collection("users").doc(user.uid).update({
+                "url": updateURL
+            });
+        }
+    });
+}
+
+function saveChanges(){
+    updateUserDB();
+    updateProfileCard();
+}
+
+function updateProfileCard(){
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        db.collection("users").doc(user.uid).get()
+        .then(function(doc){
+            document.getElementById("occupation").innerHTML = "Occupation: " + doc.data().occupation;
+            document.getElementById("preference").innerHTML = "Preference:" + doc.data().preference;
+            document.getElementById("budget").innerHTML = "Budget: " + doc.data().budget;
+            document.getElementById("quote").innerHTML = "Quote: " + doc.data().quote;
+            document.getElementById("mainCardImg").setAttribute("src", doc.data().url);
+        })
+    });
 
 }
 
 function hideProfile() {
-
     document.getElementById("maincard").classList.replace("d-fluid", "d-none");
-
 }
 
 function showProfile() {
-
     document.getElementById("maincard").classList.replace("d-none", "d-fluid");
-
 }
 

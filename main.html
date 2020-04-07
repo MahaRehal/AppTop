@@ -27,7 +27,7 @@
   <!----------------------->
 
   <nav class="navbar sticky-top navbar-dark bg-primary">
-    <a class="navbar-brand" href="main." id="titleNav">Apptop</a>
+    <a class="navbar-brand" href="main.html" id="titleNav">Apptop</a>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" type="button" id="dropdownMenu1"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,20 +44,20 @@
     <div class="card-body">
       <h4 class="card-title" id="cardTitle">Your Account!</h4>
       <div class="card">
-        <img class="card-img-top" src="images/eldorado.jpg" alt="Laptop Pic Goes Here">
+        <img class="card-img-top" id="mainCardImg" src="src/eldorado.jpg" alt="image goes here">
         <div class="card-body">
-          <h4 class="card-title" id="main-card-name">Dora Marquez</h4>
+          <h4 class="card-title" id="main-card-name"></h4>
           <p class="card-text" id="occupation">
-            Occupation: Explorer
+
           </p>
           <p class="card-text" id="preference">
-            Preference: Video Editing
+
           </p>
           <p class="card-text" id="budget">
-            Budget: 500$
+
           </p>
           <p class="card-text" id="quote">
-            Quote: "Exploring doesn't pay well..."
+
           </p>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             id="searchButtonMain1">
@@ -81,6 +81,8 @@
           </button>
         </div>
         <div class="modal-body" id="infoBody">
+          <label for="modalInput" id="modalLabel">Image URL</label>
+          <input type="text" class="form-control" id="modalInputImg" placeholder="Ex: imgur/ergerwe...">
           <label for="modalInput" id="modalLabel">Occupation</label>
           <input type="text" class="form-control" id="modalInputOcc" placeholder="Ex: archaeologist...">
           <label for="modalInput" id="modalLabel">Preference</label>
@@ -119,7 +121,7 @@
   <!--------------------------------------------------------------------->
   <!-- JS files: Your own JavaScript functions included here    -->
   <!--------------------------------------------------------------------->
-  <script src="scripts/script.js"></script>
+  <script src="scripts/main.js"></script>
 
   <!--------------------------------------------------------------------->
   <!-- Make calls to your own JavaScript functions, here below-->

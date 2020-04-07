@@ -1,5 +1,4 @@
-let db;
-
+//initialize database
 function initDB(){
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -13,12 +12,14 @@ function initDB(){
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
+    let db = firebase.firestore();
 }
 initDB();
 
+//login function using firebase widget
 function login(){
     // Initialize the FirebaseUI Widget using Firebase.
+    document.getElementById("signUpButton").style.display = 'none';
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
     var uiConfig = {
         callbacks: {
@@ -48,11 +49,9 @@ function login(){
                 // The widget is rendered.
                 // Hide the loader.
                 document.getElementById('loader').style.display = 'none';
-                document.getElementById("signUpButton").style.visibility = "hidden";
             }
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-        signInFlow: 'popup',
         signInSuccessUrl: 'main.html',
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
