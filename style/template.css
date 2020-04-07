@@ -420,3 +420,11 @@
     height: 225px;
     border-radius: 50%;
 }
+
+.firebaseui-tos-list {
+    display: none;
+}
+
+.firebaseui-form-links {
+    display: none;
+}
