@@ -205,6 +205,9 @@ function getResults(min, max){
                     modaldialog.append(modalContent);
                     modal.append(modaldialog);
 
+                    let body = document.getElementById("body");
+                    body.append(modal);
+
 
                     let row1 = document.createElement("div");
                     row1.setAttribute("id", "row" + j);
@@ -214,8 +217,8 @@ function getResults(min, max){
                         newRow.setAttribute("id", "row" + (j));
                         newRow.setAttribute("class", "card-deck");
                         newRow.append(newLaptopCard);
-                        let body = document.getElementById("laptopCards");
-                        body.append(newRow);
+                        let laptopDiv = document.getElementById("laptopCards");
+                        laptopDiv.append(newRow);
                     } else {
                         let row = document.getElementById("row" + j);
                         row.append(newLaptopCard);
