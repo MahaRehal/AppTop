@@ -48,6 +48,7 @@ function login(){
                 // The widget is rendered.
                 // Hide the loader.
                 document.getElementById('loader').style.display = 'none';
+                document.getElementById("signUpButton").style.visibility = "hidden";
             }
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.

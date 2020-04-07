@@ -53,6 +53,7 @@ function getResults(min, max){
                     //laptop card
                     let newLaptopCard = document.createElement("div");
                     newLaptopCard.setAttribute("class", "card");
+                    newLaptopCard.setAttribute("id", "newLaptopCard");
                     
                     //laptop image
                     let laptopImage = document.createElement("img");
@@ -60,21 +61,25 @@ function getResults(min, max){
                     laptopImage.setAttribute("src", doc.data().Image);
                     laptopImage.setAttribute("alt", "Laptop Image");
                     laptopImage.setAttribute("id", "laptopImage");
+                    laptopImage.setAttribute("id", "laptopImage");
                     //append laptop image
                     newLaptopCard.append(laptopImage);
 
                     //laptop Info
                     let laptopInfo = document.createElement("div");
                     laptopInfo.setAttribute("class", "card-body");
+                    laptopInfo.setAttribute("id", "laptopInfo");
 
                     //laptop name
                     let laptopName = document.createElement("h5");
                     laptopName.setAttribute("class", "card-title")
                     laptopName.innerHTML = doc.data().Name;
+                    laptopName.setAttribute("id", "laptopName");
 
                     //price
                     let laptopPrice = document.createElement("p");
                     laptopPrice.innerHTML = "Price: " + doc.data().Price;
+                    laptopPrice.setAttribute("id", "laptopPrice");
 
                     let buttonDiv = document.createElement("div");
                     buttonDiv.setAttribute("class", "btn-group");
@@ -90,6 +95,7 @@ function getResults(min, max){
                     infoButton.setAttribute("data-toggle","modal");
                     infoButton.setAttribute("data-target", "#"+modalId);
                     infoButton.innerHTML = "Show Info";
+                    infoButton.setAttribute("id", "infoButton");
 
                     //buttonDiv.append(wishlistButton);
                     buttonDiv.append(infoButton);
