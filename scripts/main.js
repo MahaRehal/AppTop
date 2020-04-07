@@ -40,7 +40,9 @@ updateUser();
 
 updateProfileCard();
 
-function saveChanges(){
+updatePreferences();
+
+function saveChanges() {
     var authRef = firebase.auth();
     authRef.onAuthStateChanged(function(user) {
         if (user) {
@@ -65,10 +67,10 @@ function updatePreferences(){
             budget: updateBudget,
             quote: updateQuote
         }).then(function() {
-            document.getElementById("occupation").innerHTML = "Occupation: " + userNow.occupation;
+            document.getElementById("occupation").innerHTML = "Occupation: " + updateOccupation;
             document.getElementById("preference").innerHTML = "Preference: " + userNow.preference;
             document.getElementById("budget").innerHTML = "Budget: " + userNow.budget;
-            document.getElementById('quote').innerHTML = "Quote + \"" + userNow.quote + "\""
+            document.getElementById("quote").innerHTML = "Quote + \"" + userNow.quote + "\""
         }, function(error) {
             
         });
