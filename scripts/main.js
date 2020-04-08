@@ -85,7 +85,7 @@ function updateProfileCard(){
         db.collection("users").doc(user.uid).get()
         .then(function(doc){
             document.getElementById("occupation").innerHTML = "Occupation: " + doc.data().occupation;
-            document.getElementById("preference").innerHTML = "Preference:" + doc.data().preference;
+            document.getElementById("preference").innerHTML = "Preference: " + doc.data().preference;
             document.getElementById("budget").innerHTML = "Budget: " + doc.data().budget;
             document.getElementById("quote").innerHTML = "Quote: " + doc.data().quote;
             document.getElementById("mainCardImg").setAttribute("src", doc.data().url);
