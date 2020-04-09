@@ -1,24 +1,3 @@
-let db;
-wishListCounter = 0;
-
-function initializeFirebase(){
-     // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyAXj5b0wW7sI7YNLGOa-3YF5SDFIRAbgMA",
-        authDomain: "apptop-ea05d.firebaseapp.com",
-        databaseURL: "https://apptop-ea05d.firebaseio.com",
-        projectId: "apptop-ea05d",
-        storageBucket: "apptop-ea05d.appspot.com",
-        messagingSenderId: "259042364213",
-        appId: "1:259042364213:web:1a7d6fabff0f4997b45a7c"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
-}
-
-initializeFirebase();
-
 //initialize seach function
 function startSearch(){
     hideSearch();
@@ -235,17 +214,6 @@ function getResults(min, max){
 
     )}
     )}
-
-function addToWishList(laptopName){
-    let newLaptop = laptopName;    
-    firebase.auth().onAuthStateChanged(function (user){
-        db.collection("users").doc(user.uid).collection("wishlist").add({
-            "wishlist": [newLaptop]
-        }, {merge: true});
-        wishlistCounter++;
-        console.log(wishlistCounter);
-    }); 
-}
 
 //hide the search div
 function hideSearch() {
